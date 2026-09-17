@@ -3,8 +3,7 @@
 DexterHand人类演示数据接触点提取工具：按时间区间裁剪演示轨迹，使用SDF算法提取手指末端与的接触点；输出一段新的包含接触信息的轨迹.NPZ；可由DexterCap Rerun Viewer打开查看 
 
 ![DexterHand Contact Extractor pipeline](docs/pipeline.svg)
-<img width="757" height="637" alt="图片" src="https://github.com/user-attachments/assets/af60e25a-abf4-4ee2-8357-63b43c569c28" />
-<img width="728" height="643" alt="图片" src="https://github.com/user-attachments/assets/eca75012-70a3-4f00-8794-d16bac030b4d" />
+<img width="364" height="320" alt="图片" src="https://github.com/user-attachments/assets/af60e25a-abf4-4ee2-8357-63b43c569c28" /> <img width="364" height="320" alt="图片" src="https://github.com/user-attachments/assets/eca75012-70a3-4f00-8794-d16bac030b4d" />
 
 
 ## 功能
