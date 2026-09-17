@@ -1,9 +1,9 @@
 ---
 layout: default
-title: DexterHand Contact
+title: DexterHand Contact Extractor
 ---
 
-# DexterHand Contact
+# DexterHand Contact Extractor
 
 **一个独立的 DexterHand 演示裁剪与五指末端接触提取工具。**
 
@@ -16,9 +16,9 @@ export DEXTERCAP_ROOT=~/projects/dextercap
 export MANO_MODEL_PATH=$DEXTERCAP_ROOT/HandReconstruction/Data/HumanModels/mano
 pip install -e .
 
-dexterhand-contact extract --input demo-right.npz --output demo-contact.npz \
+dexterhand-contact-extractor extract --input demo-right.npz --output demo-contact.npz \
   --start 2 --end 6.5 --mano-model-path "$MANO_MODEL_PATH" --device cpu
-dexterhand-contact visualize --input demo-contact.npz --dextercap-root "$DEXTERCAP_ROOT"
+dexterhand-contact-extractor visualize --input demo-contact.npz --dextercap-root "$DEXTERCAP_ROOT"
 ```
 
 完整安装、格式契约和可视化说明位于仓库 [README](../README.md)。

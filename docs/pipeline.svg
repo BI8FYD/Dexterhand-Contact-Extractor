@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="900" height="170" viewBox="0 0 900 170" role="img" aria-label="DexterHand Contact processing pipeline">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="170" viewBox="0 0 900 170" role="img" aria-label="DexterHand Contact Extractor processing pipeline">
   <style>text{font-family:system-ui,sans-serif;fill:#eaf2ff;font-size:16px}.box{fill:#16243b;stroke:#60a5fa;stroke-width:2}.arrow{stroke:#93c5fd;stroke-width:3;marker-end:url(#a)}.small{font-size:13px;fill:#b9c8df}</style>
   <defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3z" fill="#93c5fd"/></marker></defs>
   <rect width="900" height="170" fill="#0b1220" rx="14"/><rect class="box" x="24" y="48" width="180" height="72" rx="10"/><text x="47" y="80">DexterHand NPZ</text><text class="small" x="44" y="105">source trajectory</text>

@@ -1,8 +1,8 @@
-# DexterHand Contact
+# DexterHand Contact Extractor
 
 一个可独立使用的 DexterHand 数据处理工具：按时间区间裁剪演示轨迹，并提取手指末端与**长方体物体**的接触。输出是新的、可直接交给 DexterCap Rerun Viewer 打开的 NPZ；原始数据绝不会被覆盖。
 
-![DexterHand Contact pipeline](docs/pipeline.svg)
+![DexterHand Contact Extractor pipeline](docs/pipeline.svg)
 
 ## 功能
 
@@ -35,8 +35,8 @@ pip install -r requirements.txt
 然后安装本工具并导出路径：
 
 ```bash
-git clone https://github.com/<YOUR_GITHUB_USER>/dexterhand-contact.git
-cd dexterhand-contact
+git clone https://github.com/BI8FYD/Dexterhand-Contact-Extractor.git
+cd Dexterhand-Contact-Extractor
 conda run -n HandMocap pip install -e .
 
 export DEXTERCAP_ROOT=~/projects/dextercap
@@ -46,7 +46,7 @@ export MANO_MODEL_PATH=$DEXTERCAP_ROOT/HandReconstruction/Data/HumanModels/mano
 快速确认两端都可用：
 
 ```bash
-conda run -n HandMocap dexterhand-contact --help
+conda run -n HandMocap dexterhand-contact-extractor --help
 conda run -n HandMocap python "$DEXTERCAP_ROOT/Dataset/visualize.py" --help
 ```
 
@@ -55,7 +55,7 @@ conda run -n HandMocap python "$DEXTERCAP_ROOT/Dataset/visualize.py" --help
 时间窗口左闭右开。帧边界与 DexterCap Viewer 一致，均使用 `ceil(seconds × fps)`：
 
 ```bash
-conda run -n HandMocap dexterhand-contact extract \
+conda run -n HandMocap dexterhand-contact-extractor extract \
   --input /data/Cuboid_02-fps_60-right.npz \
   --start 2.0 --end 6.5 \
   --mano-model-path "$MANO_MODEL_PATH" \
@@ -80,7 +80,7 @@ conda run -n HandMocap dexterhand-contact extract \
 该命令会调用 DexterCap 已有的 Rerun viewer；红点就是新输出的接触标记：
 
 ```bash
-conda run -n HandMocap dexterhand-contact visualize \
+conda run -n HandMocap dexterhand-contact-extractor visualize \
   --input /data/Cuboid_02-contact-2.0-6.5s.npz \
   --dextercap-root "$DEXTERCAP_ROOT"
 ```

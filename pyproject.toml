@@ -3,13 +3,13 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "dexterhand-contact"
+name = "dexterhand-contact-extractor"
 version = "0.1.0"
 description = "Crop DexterHand demonstrations and extract five fingertip-to-Cuboid contacts."
 readme = "README.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
-authors = [{name = "DexterHand Contact contributors"}]
+authors = [{name = "DexterHand Contact Extractor contributors"}]
 dependencies = ["numpy>=1.23", "scipy>=1.9", "tqdm>=4.0"]
 
 [project.optional-dependencies]
@@ -18,6 +18,8 @@ viewer = ["rerun-sdk"]
 dev = ["pytest"]
 
 [project.scripts]
+dexterhand-contact-extractor = "dexterhand_contact.cli:main"
+# Kept for scripts written during the initial local validation.
 dexterhand-contact = "dexterhand_contact.cli:main"
 
 [tool.pytest.ini_options]
