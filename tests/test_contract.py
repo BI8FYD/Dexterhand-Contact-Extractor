@@ -1,6 +1,8 @@
+from pathlib import Path
+
 import numpy as np
 
-from dexterhand_contact.cli import crop_source, frame_window
+from dexterhand_contact.cli import crop_source, default_output_path, frame_window
 from dexterhand_contact.contact import FINGERTIP_NAMES, HumanContactExtractor, make_enriched_archive
 from dexterhand_contact.geometry import cuboid_crossing_contacts, cuboid_signed_distance
 
@@ -11,6 +13,12 @@ def test_time_range_is_stop_exclusive_and_crops_every_frame_aligned_field():
     cropped = crop_source(arrays, 10, 1, 3)
     assert cropped["poses"].shape == (2, 4)
     assert cropped["static"].shape == (2, 3)
+
+
+def test_default_output_is_under_the_project_output_directory():
+    path = default_output_path(Path("/data/demo.npz"), 2.0, 6.5)
+    assert path.name == "demo-contact-2-6.5s.npz"
+    assert path.parent.name == "output"
 
 
 def test_extractor_rejects_palm_and_keeps_only_a_fingertip_target():

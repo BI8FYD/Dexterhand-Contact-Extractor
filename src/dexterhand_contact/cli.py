@@ -17,6 +17,13 @@ from .contact import HumanContactExtractor, make_enriched_archive
 
 
 REQUIRED_FIELDS = {"metadata", "hand_translations", "hand_orientations_axis_angle", "hand_poses", "hand_shapes", "object_translations", "object_orientations_quat_xyzw"}
+DEFAULT_OUTPUT_DIR = Path(__file__).resolve().parents[2] / "output"
+
+
+def default_output_path(source: Path, start_s: float, end_s: float | None) -> Path:
+    """Create a descriptive default NPZ destination under the project output directory."""
+    interval = f"{start_s:g}-{'end' if end_s is None else f'{end_s:g}'}s"
+    return DEFAULT_OUTPUT_DIR / f"{source.stem}-contact-{interval}.npz"
 
 
 def resolve_mano_model_path(path: Path) -> Path:
@@ -97,7 +104,9 @@ def extract_targets(arrays: dict[str, np.ndarray], metadata: dict, *, mano_path:
 
 
 def extract_command(args: argparse.Namespace) -> int:
-    source, destination = Path(args.input).expanduser().resolve(), Path(args.output).expanduser().resolve()
+    source = Path(args.input).expanduser().resolve()
+    destination = (Path(args.output).expanduser().resolve()
+                   if args.output else default_output_path(source, args.start, args.end))
     if source == destination:
         raise ValueError("--output must be a new file; input is never overwritten")
     if destination.exists() and not args.overwrite:
@@ -151,7 +160,7 @@ def main() -> None:
     subparsers = parser.add_subparsers(dest="command", required=True)
     extract = subparsers.add_parser("extract", help="crop a right-hand DexterHand NPZ and append contact fields")
     extract.add_argument("--input", required=True)
-    extract.add_argument("--output", required=True)
+    extract.add_argument("--output", help="Processed NPZ path; default: output/<input>-contact-<interval>.npz")
     extract.add_argument("--start", type=float, default=0.0, help="inclusive time in seconds")
     extract.add_argument("--end", type=float, help="exclusive time in seconds")
     extract.add_argument("--mano-model-path", default=os.environ.get("MANO_MODEL_PATH", ""), required="MANO_MODEL_PATH" not in os.environ)

@@ -57,11 +57,14 @@ conda run -n HandMocap python "$DEXTERCAP_ROOT/Dataset/visualize.py" --help
 ```bash
 conda run -n HandMocap dexterhand-contact extract \
   --input /data/Cuboid_02-fps_60-right.npz \
-  --output /data/Cuboid_02-contact-2.0-6.5s.npz \
   --start 2.0 --end 6.5 \
   --mano-model-path "$MANO_MODEL_PATH" \
   --device cpu
 ```
+
+未指定 `--output` 时，文件自动写入本项目的
+`output/Cuboid_02-fps_60-right-contact-2-6.5s.npz`。仍可通过
+`--output /path/file.npz` 指定其他目标位置。
 
 输出 metadata 记录 `source_frame_start`、`source_frame_stop` 与实际处理方法。关键字段为：
 
